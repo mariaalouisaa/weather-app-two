@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/22ca1cdaec.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="body-container">
+     <div class="top-container">
+      <div id="item-1">
+        <h1>City...
+        </h1>
+        <h2>01/01/2001</h2>
+        <h3>12:00</h3>
+        </div>
+        <div class="item-2">
+        <form class="search-bar" id="search-bar">
+          <input type="text" placeholder="🔍" id="search-input" />
+        </form>
+      </div>
+ </div>
+      <div class="grid-container">
+        <div class="current-temp" id="main-temp">--</div>
+        <div class="temp-links">
+          <a class="celcius-link" id="celc-click" href="#">°C</a>
+          <a class="faren-link" id="faren-click" href="#">°F</a>
+        </div>
+        <div class="additional-stats">
+          <i class="fas fa-arrow-up"></i> <span id="high-temp">--°C</span><br />
+          <i class="fas fa-arrow-down"></i> <span id="low-temp">
+          --°C</span><br />
+          <i class="fas fa-wind"></i> <span id="wind">--km/h</span>
+        <br /><i class="fas fa-tint"></i> <span id="rain">--%</span>
+        </div>
+        <div class="horizontal-line"></div>
+        <div class="description">Sunny spells</div>
+        <div class="day-ahead">Mon<br><span class="emoji">😎</span><br>19°C</div>
+        <div class="day-ahead">Tue<br><span class="emoji">☔</span><br>16°C</div>
+        <div class="day-ahead">Wed<br><span class="emoji">😎</span><br>16°C</div>
+        <div class="day-ahead">Thu<br><span class="emoji">⛅</span><br>15°C</div>
+        <div class="day-ahead">Fri<br><span class="emoji">☔</span><br>15°C</div>
+      </div>
+  
+    <script src="index.js"></script>
+  </body>
+</html>

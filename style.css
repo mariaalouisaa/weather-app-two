@@ -1,0 +1,105 @@
+.body-container {
+  width: 330px;
+  border: white solid 5px;
+  font-family: "Roboto", sans-serif;
+  padding: 15px;
+  background: rgb(0, 23, 255);
+  background: linear-gradient(
+    198deg,
+    rgba(0, 23, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 58%
+  );
+  margin: 0 auto;
+}
+h1 {
+  font-size: 45px;
+  text-transform: capitalize;
+}
+h1,
+h2 {
+  margin: 0;
+  color: white;
+  font-weight: 300;
+}
+
+h3 {
+  margin: 0 auto 200px auto;
+  color: white;
+  font-weight: 300;
+}
+
+.top-container {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  grid-template-rows: 250px;
+}
+
+.item-2 {
+  justify-self: end;
+}
+input {
+  border-radius: 20px;
+  border: 2px white solid;
+  width: 20px;
+}
+
+input:hover {
+  width: 100px;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+  padding: 2px 4px;
+}
+
+.grid-container {
+  width: 330px;
+  height: 200px;
+  display: grid;
+  grid-template-rows: 2fr 3px 1fr 2fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  margin: 0 auto;
+}
+
+.current-temp {
+  font-size: 80px;
+  margin-left: 20px;
+  grid-column: 1 / span 2;
+  align-self: end;
+}
+
+.temp-links {
+  align-self: end;
+  padding-bottom: 20px;
+}
+
+.unit-clicked {
+  font-weight: bolder;
+}
+
+.additional-stats {
+  font-size: 12px;
+  grid-column: 5 / 6;
+  align-self: end;
+  padding-bottom: 10px;
+}
+.horizontal-line {
+  background: black;
+  grid-column: 1 / span 5;
+}
+.description {
+  grid-column: 1 / span 5;
+  font-size: 30px;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.day-ahead {
+  text-align: center;
+  line-height: 30px;
+}
+
+.emoji {
+  font-size: 25px;
+}
