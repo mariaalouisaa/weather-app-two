@@ -21,9 +21,8 @@ function updateLiveStats(respose) {
   high.innerHTML = `${Math.round(respose.data.main.temp_max)}ºC`;
   let low = document.querySelector("#low-temp");
   low.innerHTML = `${Math.round(respose.data.main.temp_min)}ºC`;
-  // there is something wrong with wind equation
   let wind = document.querySelector("#wind");
-  wind.innerHTML = `${Math.round(respose.data.wind.speed * 10)} km/h`;
+  wind.innerHTML = `${Math.round(respose.data.wind.speed)} km/h`;
   // find the rain % in the response
   let description = document.querySelector(".description");
   description.innerHTML = respose.data.weather[0].description;
