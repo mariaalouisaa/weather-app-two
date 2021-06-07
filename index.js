@@ -1,5 +1,6 @@
 let apiKey = "&appid=a48984de2e1866778622568cbcb97ff1";
 let apiUrl = "https://api.openweathermap.org/data/2.5/weather?";
+let city = document.getElementById("city");
 
 function showCurrentPosition(position) {
   let lat = position.coords.latitude;
@@ -11,21 +12,25 @@ function showCurrentPosition(position) {
 
 navigator.geolocation.getCurrentPosition(showCurrentPosition);
 
-function updateLiveStats(respose) {
-  let cityTitle = document.querySelector("h1");
-  let city = respose.data.name;
-  cityTitle.innerHTML = city;
-  let liveTemp = document.querySelector("#main-temp");
-  liveTemp.innerHTML = Math.round(respose.data.main.temp);
-  let high = document.querySelector("#high-temp");
-  high.innerHTML = `${Math.round(respose.data.main.temp_max)}ºC`;
-  let low = document.querySelector("#low-temp");
-  low.innerHTML = `${Math.round(respose.data.main.temp_min)}ºC`;
-  let wind = document.querySelector("#wind");
-  wind.innerHTML = `${Math.round(respose.data.wind.speed)} km/h`;
-  // find the rain % in the response
-  let description = document.querySelector(".description");
-  description.innerHTML = respose.data.weather[0].description;
+function updateLiveStats(response) {
+  document.querySelector("#city").innerHTML = response.data.name;
+  document.querySelector(
+    "#country"
+  ).innerHTML = ` , ${response.data.sys.country}`;
+  document.querySelector("#main-temp").innerHTML = Math.round(
+    response.data.main.temp
+  );
+  document.querySelector("#high-temp").innerHTML = `${Math.round(
+    response.data.main.temp_max
+  )}ºC`;
+  document.querySelector("#low-temp").innerHTML = `${Math.round(
+    response.data.main.temp_min
+  )}ºC`;
+  document.querySelector("#wind").innerHTML = `${Math.round(
+    response.data.wind.speed
+  )} km/h`;
+  document.querySelector(".description").innerHTML =
+    response.data.weather[0].description;
 }
 
 function searchCity(event) {
@@ -36,20 +41,18 @@ function searchCity(event) {
 }
 
 function updateCelcius(response) {
-  console.log(response);
+  let liveTemp = document.querySelector("#main-temp");
+  liveTemp.innerHTML = Math.round(response.data.main.temp);
 }
 
 function convertCelcius(event) {
   event.preventDefault();
-  axios.get(`${apiUrl}q=${city}${apiKey}&units=metric`).then(updateCelcius);
-  let celc = document.querySelector("#celc-click");
-  celc.classList.add("unit-clicked");
-  let faren = document.querySelector("#faren-click");
-  faren.classList.remove("unit-clicked");
+  axios
+    .get(`${apiUrl}q=${city.textContent}${apiKey}&units=metric`)
+    .then(updateCelcius);
+  document.querySelector("#celc-click").classList.add("unit-clicked");
+  document.querySelector("#faren-click").classList.remove("unit-clicked");
 }
-
-let celciusLink = document.querySelector(".celcius-link");
-celciusLink.addEventListener("click", convertCelcius);
 
 let now = new Date();
 let date = now.getDate();
@@ -88,13 +91,13 @@ changeCity.addEventListener("submit", searchCity);
 
 function convertFaren(event) {
   event.preventDefault();
-  let temp = document.querySelector("#main-temp");
-  temp.innerHTML = `63`;
-  let celc = document.querySelector("#celc-click");
-  celc.classList.remove("unit-clicked");
-  let faren = document.querySelector("#faren-click");
-  faren.classList.add("unit-clicked");
+  document.querySelector("#main-temp").innerHTML = `63`;
+  document.querySelector("#celc-click").classList.remove("unit-clicked");
+  document.querySelector("#faren-click").classList.add("unit-clicked");
 }
 
 let farenLink = document.querySelector(".faren-link");
 farenLink.addEventListener("click", convertFaren);
+
+let celciusLink = document.querySelector(".celcius-link");
+celciusLink.addEventListener("click", convertCelcius);
