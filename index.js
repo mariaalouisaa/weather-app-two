@@ -12,7 +12,10 @@ function showCurrentPosition(position) {
   document.querySelector("#faren-click").classList.remove("unit-clicked");
 }
 
-navigator.geolocation.getCurrentPosition(showCurrentPosition);
+function getCurrentLocation(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(showCurrentPosition);
+}
 
 function updateLiveStats(response) {
   document.getElementById("search-bar").reset();
@@ -101,6 +104,8 @@ if (minute < 10) minute = "0" + now.getMinutes();
 let h3 = document.querySelector("h3");
 h3.innerHTML = `${hour}:${minute}`;
 
+navigator.geolocation.getCurrentPosition(showCurrentPosition);
+
 let changeCity = document.querySelector("#search-bar");
 changeCity.addEventListener("submit", searchCity);
 
@@ -109,3 +114,6 @@ farenLink.addEventListener("click", convertFaren);
 
 let celciusLink = document.querySelector(".celcius-link");
 celciusLink.addEventListener("click", convertCelcius);
+
+let gpsIcon = document.querySelector(".locate-icon");
+gpsIcon.addEventListener("click", getCurrentLocation);

@@ -1,5 +1,5 @@
 .body-container {
-  width: 330px;
+  width: 350px;
   border: white solid 5px;
   font-family: "Roboto", sans-serif;
   padding: 15px;
@@ -34,22 +34,35 @@ h3 {
 
 .top-container {
   display: grid;
-  grid-template-columns: 70% 30%;
+  grid-template-columns: 65% 30% 5%;
   grid-template-rows: 220px;
 }
 
 .item-2 {
   justify-self: end;
 }
+
 input {
   border-radius: 20px;
   border: 2px white solid;
   width: 20px;
   opacity: 85%;
+  margin-bottom: 5px;
+  transition: 800ms;
 }
 
 input:hover {
   width: 100px;
+}
+
+.get-location-button {
+  grid-column: 3;
+  justify-self: end;
+}
+
+.locate-icon {
+  color: rgb(212, 14, 14);
+  cursor: pointer;
 }
 
 .celcius-link,
