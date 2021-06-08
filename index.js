@@ -15,6 +15,7 @@ function showCurrentPosition(position) {
 navigator.geolocation.getCurrentPosition(showCurrentPosition);
 
 function updateLiveStats(response) {
+  document.getElementById("search-bar").reset();
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector(
     "#country"
