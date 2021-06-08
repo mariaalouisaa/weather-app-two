@@ -8,6 +8,8 @@ function showCurrentPosition(position) {
   axios
     .get(`${apiUrl}lat=${lat}&lon=${long}${apiKey}&units=metric`)
     .then(updateLiveStats);
+  document.querySelector("#celc-click").classList.add("unit-clicked");
+  document.querySelector("#faren-click").classList.remove("unit-clicked");
 }
 
 navigator.geolocation.getCurrentPosition(showCurrentPosition);
@@ -35,12 +37,15 @@ function updateLiveStats(response) {
 
 function searchCity(event) {
   event.preventDefault();
+  document.querySelector("#celc-click").classList.add("unit-clicked");
+  document.querySelector("#faren-click").classList.remove("unit-clicked");
+
   let cityInput = document.querySelector("#search-input");
   let city = cityInput.value;
   axios.get(`${apiUrl}q=${city}${apiKey}&units=metric`).then(updateLiveStats);
 }
 
-function updateCelcius(response) {
+function updateTemp(response) {
   let liveTemp = document.querySelector("#main-temp");
   liveTemp.innerHTML = Math.round(response.data.main.temp);
 }
@@ -49,9 +54,18 @@ function convertCelcius(event) {
   event.preventDefault();
   axios
     .get(`${apiUrl}q=${city.textContent}${apiKey}&units=metric`)
-    .then(updateCelcius);
+    .then(updateTemp);
   document.querySelector("#celc-click").classList.add("unit-clicked");
   document.querySelector("#faren-click").classList.remove("unit-clicked");
+}
+
+function convertFaren(event) {
+  event.preventDefault();
+  axios
+    .get(`${apiUrl}q=${city.textContent}${apiKey}&units=imperial`)
+    .then(updateTemp);
+  document.querySelector("#celc-click").classList.remove("unit-clicked");
+  document.querySelector("#faren-click").classList.add("unit-clicked");
 }
 
 let now = new Date();
@@ -88,13 +102,6 @@ h3.innerHTML = `${hour}:${minute}`;
 
 let changeCity = document.querySelector("#search-bar");
 changeCity.addEventListener("submit", searchCity);
-
-function convertFaren(event) {
-  event.preventDefault();
-  document.querySelector("#main-temp").innerHTML = `63`;
-  document.querySelector("#celc-click").classList.remove("unit-clicked");
-  document.querySelector("#faren-click").classList.add("unit-clicked");
-}
 
 let farenLink = document.querySelector(".faren-link");
 farenLink.addEventListener("click", convertFaren);
