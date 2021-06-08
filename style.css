@@ -115,3 +115,9 @@ footer {
   text-align: center;
   padding-top: 30px;
 }
+
+.github {
+  color: rgb(0, 12, 139);
+  text-decoration: none;
+  font-weight: bolder;
+}
